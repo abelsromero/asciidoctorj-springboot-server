@@ -1,0 +1,27 @@
+= Asciidoctorj SpringBoot Server
+
+This project is a test to validate how to integrate Asciidoctorj into an SpringBoot application.
+
+== Special requirements
+
+In order for the server to work correctly, we need to setup special packaging for Asciidoctorj in Gradle.
+
+[source,groovy]
+.build.gradle
+----
+bootJar {
+  requiresUnpack('**/asciidoctorj-*.jar')
+}
+----
+
+ref: https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/html/#packaging-executable-configuring-unpacking[Spring Boot docs]
+
+== Testing
+
+. Build and run the app with.
+
+ ./gradlew clean build && java -jar build/libs/asciidoctorj-springboot-server-0.0.1-SNAPSHOT.jar
+
+. Go to url to load a converted HTML example document.
+http://localhost:8080/convert
+
